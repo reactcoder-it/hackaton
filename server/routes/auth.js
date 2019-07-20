@@ -20,14 +20,16 @@ router.post("/login", (req, res) => {
       }
 
       if (user.password === password) {
-        const payload = { id: user._id }
+        const payload = {
+          id: user._id,
+          userName: user.name,
+          userRole: user.role
+        }
         console.log(payload)
         const token = jwt.sign(payload, config.JWT_SECRET)
         res.json({
           message: 'ok',
-          token,
-          userId: user._id,
-          username: user.name
+          token
         })
       } else {
         res.status(401).json({ message: "password did not match" })

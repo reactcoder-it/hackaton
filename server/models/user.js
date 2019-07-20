@@ -1,6 +1,12 @@
 const mongoose = require("mongoose")
 const timestamp = require("mongoose-timestamp")
 
+const ROLES = [
+  "Minister",
+  "Manager",
+  "User"
+]
+
 const UserSchema = new mongoose.Schema({
   email: {
     type: String,
@@ -14,6 +20,12 @@ const UserSchema = new mongoose.Schema({
 
   name: {
     type: String,
+    required: true
+  },
+
+  role: {
+    type: String,
+    enum: ROLES,
     required: true
   }
 })

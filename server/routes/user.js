@@ -89,4 +89,16 @@ router.post('/signin', async (req, res) => {
   }
 })
 
+router.get('/create', (req, res) => {
+  var user = new User({
+    email: "vmp@live.ru",
+    password: "12345",
+    name: "Вася Пупкин",
+    role: "Minister"
+  })
+  user.save((err, user) => {
+    res.json('OK')
+  })
+})
+
 module.exports = router

@@ -70,31 +70,6 @@ app.prepare().then(() => {
     server.use('/api/user', userRoutes)
     server.use('/api/auth', authRoutes)
 
-    // Для Next.js
-    server.get('/building/:id', (req, res) => {
-      const actualPage = '/building';
-      const queryParams = { id: req.params.id };
-      app.render(req, res, actualPage, queryParams);
-    })
-
-    server.get('/project/:id', (req, res) => {
-      const actualPage = '/project';
-      const queryParams = { id: req.params.id };
-      app.render(req, res, actualPage, queryParams);
-    })
-
-    server.get('/realty/:id', (req, res) => {
-      const actualPage = '/realty'
-      const queryParams = { id: req.params.id } 
-      app.render(req, res, actualPage, queryParams)
-    })
-
-    server.get('/post/:slug', (req, res) => {
-      const actualPage = '/post'
-      const queryParams = { slug: req.params.slug } 
-      app.render(req, res, actualPage, queryParams)
-    })
-
     server.get("*", (req, res) => {
       return handle(req, res);
     })
