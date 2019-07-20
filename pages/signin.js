@@ -133,8 +133,8 @@ class SignIn extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="col-4 offset-md-4 text-center box">
+      <div className="dix">
+        <div className="box">
           <h1>Вход</h1>
           <form className="text-left" onSubmit={this.onSubmit}>
 
@@ -153,10 +153,18 @@ class SignIn extends React.Component {
           </form>
         </div>
         <style jsx>{`
+          .dix {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
           .box {
             box-shadow: 0px 3px 6px rgba(0,0,0,.2);
             border-radius: 20px;
             padding: 2rem 1rem;
+            min-width: 350px;
           }
           .bio {
             display: block;

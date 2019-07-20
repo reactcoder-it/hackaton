@@ -28,8 +28,8 @@ const Content = ({ children }) => (
   </p>
 )
 
-const ContentLink = ({ children }) => (
-  <a>
+const ContentLink = ({ children, ...props }) => (
+  <a {...props}>
     {children}
     <style jsx>{`
       a {
@@ -50,9 +50,19 @@ const ContentLink = ({ children }) => (
 
 export default () => (
   <div>
-    <Heading>You can't see this!</Heading>
+    <Heading>Вы не авторизованы!</Heading>
     <Content>
-      You're not authenticated yet. Maybe you want to <Link href='/auth/sign-in' passHref><ContentLink>sign in</ContentLink></Link> and see what happens?
+      <Link href='/signin' passHref><ContentLink>Войти</ContentLink></Link>
     </Content>
+    <style jsx>{`
+      div {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    `}</style>
   </div>
 )

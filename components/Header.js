@@ -1,3 +1,5 @@
+import { unsetToken } from '../utils/auth'
+import Router from 'next/router'
 import Link from "next/link"
 
 const UserAvatar = ({ userName, userRole }) => (
@@ -51,6 +53,11 @@ const HeaderLink = ({ href, activeUrl, children }) => (
 )
 
 export default class Header extends React.Component {
+  onLogout = () => {
+    unsetToken()
+    Router.push('/signin')
+  }
+
   render() {
     const { userName, userRole, currentUrl } = this.props
     return (
@@ -63,6 +70,7 @@ export default class Header extends React.Component {
           <li><HeaderLink href="/dashboard/mycalendar" activeUrl={currentUrl}>Календарь</HeaderLink></li>
         </ul>
         <UserAvatar userName={userName} userRole={userRole} />
+        <button onClick={this.onLogout}>Выход</button>
         <style jsx>{`
           .logo {
             font-weight: 900;
@@ -87,6 +95,11 @@ export default class Header extends React.Component {
           a {
             display: inline-block;
             padding: 0 10px;
+            color: #fff;
+          }
+          button {
+            background: transparent;
+            border: none;
             color: #fff;
           }
         `}</style>
