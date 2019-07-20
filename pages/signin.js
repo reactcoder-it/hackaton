@@ -133,7 +133,7 @@ class SignIn extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <div className="col-4 offset-md-4 text-center box">
           <h1>Вход</h1>
           <form className="text-left" onSubmit={this.onSubmit}>

@@ -20,18 +20,18 @@ const App = ({ children }) => (
   </div>
 )
 
-const Main = ({ children }) => (
-  <div>
-    {children}
-    <style jsx>{`
-      div {
-        max-width: 1024px;
-        margin: 0 auto;
-        padding: 30px;
-      }
-    `}</style>
-  </div>
-)
+// const Main = ({ children }) => (
+//   <div>
+//     {children}
+//     <style jsx>{`
+//       div {
+//         //max-width: 1024px;
+//         margin: 0 auto;
+//         padding: 30px;
+//       }
+//     `}</style>
+//   </div>
+// )
 
 export default Page => class DefaultPage extends React.Component {
   static getInitialProps (ctx) {
@@ -72,7 +72,8 @@ export default Page => class DefaultPage extends React.Component {
   render () {
     const cssFiles = [
       'https://unpkg.com/normalize.css@5.0.0/normalize.css',
-      "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
     ]
     return (
       <div>
@@ -94,10 +95,10 @@ export default Page => class DefaultPage extends React.Component {
           <title>Контроль.рф</title>
         </Head>
         <App>
-          <Main>
+          {/* <Main> */}
             {/* <Header {...this.props} /> */}
             <Page {...this.props} />
-          </Main>
+          {/* </Main> */}
         </App>
       </div>
     )
