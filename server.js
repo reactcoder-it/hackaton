@@ -43,6 +43,7 @@ const handle = app.getRequestHandler()
 // API routes
 const userRoutes = require('./server/routes/user')
 const authRoutes = require('./server/routes/auth')
+const promiseRoutes = require('./server/routes/promise')
 
 console.log(config)
 
@@ -69,6 +70,7 @@ app.prepare().then(() => {
     // API
     server.use('/api/user', userRoutes)
     server.use('/api/auth', authRoutes)
+    server.use('/api/promise', promiseRoutes)
 
     server.get("*", (req, res) => {
       return handle(req, res);

@@ -1,6 +1,5 @@
 const mongoose = require("mongoose")
 const timestamp = require("mongoose-timestamp")
-const 
 
 const UserSchema = new mongoose.Schema({
 
@@ -20,8 +19,7 @@ const UserSchema = new mongoose.Schema({
 
   // Ответственный
   responsible: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    type: String,
     required: true
   },
 
@@ -29,9 +27,31 @@ const UserSchema = new mongoose.Schema({
   text: {
     type: String,
     required: true
+  },
+
+  // Исполнитель
+  executor: {
+    type: String,
+    required: true
+  },
+
+  // Дата дачи обещания
+  startDate: {
+    type: Date,
+    default: Date.now()
+  },
+
+  // Срок
+  limitation: {
+    type: Date,
+    required: true
+  },
+
+  // Завершено
+  finished: {
+    type: Boolean,
+    required: true
   }
-
-
 })
 UserSchema.plugin(timestamp)
 
