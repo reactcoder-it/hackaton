@@ -19,7 +19,7 @@ const tasks = [
     id: 1,
     title: "К 2035 году до Марса можно будет долететь за 80 суток",
     responsible: "Маск Илон",
-    executor: "Газзаев Валерий",
+    executor: "Маск Илон",
     limitation: "2019/09/23",
     finish: false
   },
@@ -35,7 +35,7 @@ const tasks = [
     id: 3,
     title: "К 2035 году до Марса можно будет долететь за 80 суток",
     responsible: "Маск Илон",
-    executor: "Газзаев Валерий",
+    executor: "Маск Илон",
     limitation: "2019/08/08",
     finish: false
   },
@@ -51,7 +51,7 @@ const tasks = [
     id: 5,
     title: "К 2035 году до Марса можно будет долететь за 80 суток",
     responsible: "Маск Илон",
-    executor: "Газзаев Валерий",
+    executor: "Маск Илон",
     limitation: "2019/08/08",
     finish: false
   }
