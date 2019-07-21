@@ -13,8 +13,12 @@ const QuizPage = ({ id, activePage, children }) => (
 )
 
 export default class Quiz extends React.Component {
-
   state = {
+    title: "",
+    responsible: "",
+    executor: "",
+    text: "",
+    limitation: "",
     activePage: 0
   }
 
@@ -34,33 +38,66 @@ export default class Quiz extends React.Component {
     })
   )
 
+  onSubmit = async () => {
+
+    const data = {
+      title,
+      responsible,
+      executor,
+      text,
+      limitation,
+      activePage
+    }
+
+    const url = this.props.apiUrl
+
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      })
+
+      if (response.ok) {
+        // TODO: ok
+      } else {
+        this.setState({ error: "Неверное имя пользователя или пароль. Попробуйте снова!" })
+      }
+    } catch (error) {
+      this.setState({ error: error.message })
+    }
+  }
+
   render() {
+
+    const { title, responsible, executor, text, limitation, activePage } = this.state
+
     return (
       <div className="quiz">
-        <QuizPage id={0} activePage={this.state.activePage}>
+        <QuizPage id={0} activePage={activePage}>
           <div className="quiz__inner">
             <div className="group">
-              <label>Проект вносит:</label>
-              <input type="text" />
-            </div>
-            <div className="group">
-              <label>Проект контролирует:</label>
-              <input type="text" />
-            </div>
-            <div className="group">
               <label>Название проекта:</label>
-              <input type="text" />
+              <input type="text" value={title} />
+            </div>
+            <div className="group">
+              <label>Ответственный:</label>
+              <input type="text" value={responsible} />
+            </div>
+            <div className="group">
+              <label>Исполнитель:</label>
+              <input type="text" value={executor} />
             </div>
             <div className="group">
               <label>Описание проекта:</label>
-              <textarea></textarea>
+              <textarea value={text}></textarea>
             </div>
           </div>
           <div className="button-block">
             <button onClick={this.onNext}>Продолжить</button>
           </div>
         </QuizPage>
-        <QuizPage id={1} activePage={this.state.activePage}>
+        <QuizPage id={1} activePage={activePage}>
           <div className="quiz__inner">
             <div className="group">
               <label>Министерство:</label>
@@ -78,13 +115,17 @@ export default class Quiz extends React.Component {
               <label>Описание проекта:</label>
               <textarea></textarea>
             </div>
+            <div className="group">
+              <label>Срок окончания проекта:</label>
+              <input type="text" />
+            </div>
           </div>
           <div className="button-block">
             <button onClick={this.onPrev}>Назад</button>
             <button onClick={this.onNext}>Продолжить</button>
           </div>
         </QuizPage>
-        <QuizPage id={2} activePage={this.state.activePage}>
+        <QuizPage id={2} activePage={activePage}>
           <div className="quiz__inner">
             <table>
               <tr>
@@ -104,7 +145,7 @@ export default class Quiz extends React.Component {
           </div>
           <div className="button-block">
             <button onClick={this.onPrev}>Назад</button>
-            <button>Ok</button>
+            <button onClick={this.onSubmit}>Ok</button>
             <button>Печать</button>
           </div>
         </QuizPage>
