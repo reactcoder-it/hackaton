@@ -62,7 +62,7 @@ export default class Header extends React.Component {
     const { userName, userRole, currentUrl } = this.props
     return (
       <div className="header">
-        <div className="logo">КОНТРОЛЬ.РФ</div>
+        <div className="logo"><img src="/static/logo.png" />КОНТРОЛЬ.РФ</div>
         <ul className="menu">
           <li><HeaderLink href="/dashboard" activeUrl={currentUrl}>Данные</HeaderLink></li>
           <li><HeaderLink href="/dashboard/mytasks" activeUrl={currentUrl}>Мои задачи</HeaderLink></li>
@@ -75,6 +75,8 @@ export default class Header extends React.Component {
           .logo {
             font-weight: 900;
             margin-right: 30px;
+            display: inline-flex;
+            align-items: center;
           }
           .header {
             display: flex;
@@ -101,6 +103,9 @@ export default class Header extends React.Component {
             background: transparent;
             border: none;
             color: #fff;
+          }
+          img {
+            width: 40px;
           }
         `}</style>
       </div>
