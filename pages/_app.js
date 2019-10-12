@@ -1,25 +1,20 @@
 import App from "next/app"
-import { ApolloClient } from 'apollo-client'
-import { ApolloProvider } from "@apollo/react-hooks"
-import { HttpLink } from 'apollo-link-http'
-import fetch from 'isomorphic-unfetch'
+import { ThemeProvider } from 'styled-components'
 
-const apolloClient = new ApolloClient({
-  link: new HttpLink({
-    uri: "https://api.github.com/graphql",
-    credentials: 'same-origin',
-    fetch
-  })
-})
+const theme = {
+  colors: {
+    primary: "#0070f3"
+  }
+}
 
 class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props
     return (
-      <ApolloProvider client={apolloClient}>
+      <ThemeProvider theme={theme}>
         <Component {...pageProps} />
-        <NProgress />
-      </ApolloProvider>
+        {/* <NProgress /> */}
+      </ThemeProvider>
     )
   }
 }
